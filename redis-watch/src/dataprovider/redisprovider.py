@@ -51,7 +51,7 @@ class RedisStatsProvider(object):
             argument (str): The args sent to the command.
         """
 
-        epoch = str(timeutils.convert_to_epoch(timestamp))
+        epoch = str(timeutils.convert_to_epoch(timestamp))[:10]
         current_date = timestamp.strftime('%y%m%d')
 
         # start a redis MULTI/EXEC transaction
@@ -298,7 +298,7 @@ class RedisStatsProvider(object):
 
         else:
             # add counts of all seconds between start and end date
-            for x in range(start, end + 1):
+            for x in range(int(str(start)[:10]), int(str(end)[:10]) + 1):
                 s.append(server + ":" + seconds_key_name + ":" + str(x))
 
         # store the union of all the sets in a temp set

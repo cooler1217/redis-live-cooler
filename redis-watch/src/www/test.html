@@ -3,20 +3,23 @@
 <head>
 </head>
 <body>
-	<script type="text/javascript">
-		// 获取某个时间格式的时间戳
-		var stringTime = "2014-07-10 10:21:12";
-		var timestamp2 = Date.parse(new Date(stringTime));
-		timestamp2 = timestamp2 / 1000;
-		alert(timestamp2);
-		//2014-07-10 10:21:12的时间戳为：1404958872 
-		// console.log(stringTime + "的时间戳为：" + timestamp2);
-
-		// 将当前时间换成时间格式字符串
-		var timestamp3 = 1403058804;
-		var newDate = new Date();
-		newDate.setTime(timestamp3 * 1000);
-		alert(newDate);
-	</script>
+<div class="player" id="player" err="">
+<object type="application/x-shockwave-flash" data="http://static.youku.com/v1.0.0558/v/swf/player_yknpsv.swf" width="100%" height="100%" id="movie_player">
+<param name="allowFullScreen" value="true">
+<param name="allowscriptaccess" value="always">
+<param name="allowFullScreenInteractive" value="true">
+<param name="wmode" value="direct">
+<param name="bgcolor" value="#000000">
+<param name="flashvars" value="VideoIDS=XMTI5ODA0ODMzNg==&amp;ShowId=276431&amp;category=87&amp;Cp=authorized&amp;sv=true&amp;ev=4&amp;Light=on&amp;THX=off&amp;unCookie=0&amp;frame=0&amp;pvid=1439194685290KQEmh8&amp;uepflag=0&amp;Tid=0&amp;isAutoPlay=true&amp;Version=/v1.0.1081&amp;show_ce=0&amp;winType=interior&amp;openScanCode=1&amp;scanCodeText=&quot;限时&quot; 扫码免广告&amp;embedid=AjMyNDUxMjA4NAJ3d3cueW91a3UuY29tAi8=&amp;vext=bc%3D%26pid%3D1439194685290KQEmh8%26unCookie%3D0%26frame%3D0%26type%3D0%26svt%3D1%26stg%3D275%26emb%3DAjMyNDUxMjA4NAJ3d3cueW91a3UuY29tAi8%3D%26dn%3D%E7%BD%91%E9%A1%B5%26hwc%3D1%26mtype%3Doth&amp;pageStartTime=1439194685289">
+<param name="movie" value="http://static.youku.com/v1.0.0558/v/swf/player_yknpsv.swf">
+<div class="player_html5">
+<div class="picture" style="height:100%">
+<div style="line-height:460px;">
+<span style="font-size:18px">您还没有安装flash播放器,请点击<a href="http://www.adobe.com/go/getflash" target="_blank">这里</a>安装</span>
+</div>
+</div>
+</div>
+</object>
+</div>
 </body>
 </html>

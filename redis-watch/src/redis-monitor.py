@@ -50,7 +50,9 @@ class Monitor(object):
     def parse_response(self):
         """Parses the most recent responses from the current connection.
         """
-        return self.connection.read_response()
+        content = self.connection.read_response() 
+        print content
+        return content
 
     def listen(self):
         """A generator which yields responses from the MONITOR command.
@@ -103,7 +105,6 @@ class MonitorThread(threading.Thread):
         for command in commands:
             try:
                 parts = command.split(" ")
-
                 if len(parts) == 1:
                     continue
 
@@ -195,6 +196,7 @@ class InfoThread(threading.Thread):
                 redis_info = redis_client.info()
                 current_time = datetime.datetime.now()
                 used_memory = int(redis_info['used_memory'])
+                # print redis_info
 
                 # used_memory_peak not available in older versions of redis
                 try:
@@ -222,7 +224,7 @@ class InfoThread(threading.Thread):
 
                 # stats_provider.SaveKeysInfo(self.id, current_time, expires, persists)
 
-                time.sleep(1)
+                # time.sleep(1)
 
             except Exception, e:
                 tb = traceback.format_exc()
@@ -261,10 +263,11 @@ class RedisMonitor(object):
             # info.setDaemon(True)
             info.start()
 
-        t = Timer(duration, self.stop)
-        t.start()
+        # t = Timer(duration, self.stop)
+        # t.start()
 
         try:
+            self.stop()
             while self.active:
                 pass
         except (KeyboardInterrupt, SystemExit):
@@ -286,12 +289,15 @@ if __name__ == '__main__':
     parser.add_argument('--duration',
                         type=int,
                         help="duration to run the monitor command (in seconds)",
-                        required=True)
+                        required=False)
     parser.add_argument('--quiet',
                         help="do  not write anything to standard output",
                         required=False,
                         action='store_true')
     args = parser.parse_args()
     duration = args.duration
+    duration =  10
     monitor = RedisMonitor()
+    # while True:
     monitor.run(duration)
+        # time.sleep(60)

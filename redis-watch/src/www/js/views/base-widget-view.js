@@ -57,7 +57,8 @@ var BaseWidget = Backbone.View.extend({
     if (this.enableLogging)
       console.log(this.Name + ": Time Elapsed = " + timeElapsed + " ms")
 
-    this.render()
+    this.render();
+     self.UpdateModel(true) 
 
     if(this.enableTimer)     
     {
